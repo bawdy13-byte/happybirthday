@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>お誕生日おめでとう — 母へ</title>
+    <style>
+      :root{--bg:#fff8f0;--card:#ffffff;--accent:#e76f51;--muted:#666;--glass: rgba(255,255,255,0.7);--mobile-margin: 16px}
+        *{box-sizing:border-box}
+          body{margin:0;font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN",Meiryo,Roboto,"Noto Sans JP",sans-serif;background:linear-gradient(180deg,#fff 0%,#fff8f0 100%);color:#222;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
+              .wrap{max-width:900px;margin:var(--mobile-margin) auto;padding:var(--mobile-margin)}
+                header{display:flex;gap:16px;align-items:center}
+                  .logo{width:74px;height:74px;border-radius:12px;overflow:hidden;flex:0 0 74px;background:linear-gradient(135deg,#ffe7dd,#ffd6c2);display:flex;align-items:center;justify-content:center}
+                      h1{margin:0;font-size:clamp(20px,4vw,34px);line-height:1.05}
+                        .subtitle{color:var(--muted);font-size:14px}
+                          .hero{margin-top:14px;background:var(--card);border-radius:14px;padding:14px;box-shadow:0 8px 20px rgba(0,0,0,0.06);position:relative;overflow:hidden}
+                            .big-title{font-size:clamp(28px,6vw,48px);font-weight:700;margin:6px 0}
+                              .hero-grid{display:flex;flex-direction:column;gap:12px}
+                                @media(min-width:820px){.hero-grid{display:grid;grid-template-columns:1fr 320px;flex-direction:initial}}
+                                  .panel{background:linear-gradient(180deg,#fff,#fff9f4);padding:14px;border-radius:10px;border:1px solid rgba(0,0,0,0.03)}
+                                    .message{white-space:pre-wrap}
+                                      .photo-placeholder{height:320px;border-radius:10px;display:flex;align-items:center;justify-content:center;padding:20px;color:#fff;text-align:center}
+                                        .ph-1{background:linear-gradient(135deg,#e76f51,#f4a261)}
+                                          .ph-2{background:linear-gradient(135deg,#2a9d8f,#2a9db2)}
+                                            .ph-3{background:linear-gradient(135deg,#e9c46a,#f7d79c)}
+                                              #fw{position:absolute;inset:0;pointer-events:none}
+                                                footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+                                                  
+                                                  /* SPLASH overlay */
+                                                  .splash{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;z-index:9999;background:linear-gradient(135deg,#111827,#0b1220);color:#fff;overflow:hidden}
+                                                      .splash-content{z-index:2;text-align:center;padding:24px}
+                                                        .splash-title{font-size:clamp(28px,8vw,64px);letter-spacing:2px;font-weight:800}
+                                                          .splash-sub{margin-top:8px;color:rgba(255,255,255,0.9);font-size:18px}
+                                                          </style>
+                                                        </head>
+                                                        <body>
+                                                          
+                                                          <!-- スプラッシュ画面 -->
+                                                          <div id="splash" class="splash" role="dialog" aria-label="お誕生日のアニメーション">
+                                                            <div class="splash-content">
+                                                              <div class="splash-title">Happy Birthday</div>
+                                                              <div class="splash-sub">お誕生日おめでとう</div>
+                                                            </div>
+                                                          </div>
+                                                          
+                                                          <!-- メインコンテンツ -->
+                                                          <div class="wrap" id="mainContent" aria-hidden="true">
+                                                            <header>
+                                                              <div class="logo" aria-hidden="true"><div style="font-weight:700;color:#fff;font-size:18px">母へ</div></div>
+                                                              <div>
+                                                                <h1>お誕生日おめでとう！</h1>
+                                                                <div class="subtitle">いつもありがとう。今日はあなたの日です。</div>
+                                                              </div>
+                                                            </header>
+                                                            
+                                                            <main class="hero" id="hero">
+                                                            <canvas id="fw" aria-hidden="true"></canvas>
+                                                            <div class="hero-grid">
+                                                              <div class="left-column">
+                                                                <h2 class="big-title">お母さん、お誕生日おめでとう！</h2>
+                                                                
+                                                                <!-- 誕生日表示パネル -->
+                                                                <div class="panel" id="birthdayPanel" style="margin-top:12px; text-align:center; font-size:18px; line-height:1.5;">
+                                                                  <div id="currentDate"></div>
+                                                                  <div id="arrow1" style="display:none;">↓</div>
+                                                                  <div id="birthdayDate"></div>
+                                                                  <div id="arrow2" style="display:none;">↓</div>
+                                                                  <div id="birthdayMessage" style="font-weight:bold;"></div>
+                                                                </div>
+                                                                
+                                                                <div class="panel" style="display:grid;grid-template-columns:1fr;gap:10px; margin-top:12px">
+                                                                  <div class="photo-placeholder ph-1" role="img" aria-label="思い出のプレースホルダー1">
+                                                                    <div><strong style="font-size:20px">思い出1</strong><div style="margin-top:8px;font-size:14px">（ここに写真の代わりのテキストを置いています）</div></div>
+                                                                  </div>
+                                                                  <div class="photo-placeholder ph-2" role="img" aria-label="思い出のプレースホルダー2">
+                                                                    <div><strong style="font-size:20px">思い出2</strong><div style="margin-top:8px;font-size:14px">（差し替え不要）</div></div>
+                                                                  </div>
+                                                                  <div class="photo-placeholder ph-3" role="img" aria-label="思い出のプレースホルダー3">
+                                                                    <div><strong style="font-size:20px">思い出3</strong><div style="margin-top:8px;font-size:14px">（差し替え不要）</div></div>
+                                                                  </div>
+                                                                </div>
+                                                                
+                                                                <div class="panel" style="margin-top:12px">
+                                                                  <h3>お母さんへのメッセージ</h3>
+                                                                  <p class="message">お誕生日おめでとう！
+                                                                    いつも家族のために頑張ってくれてありがとう。
+                                                                    お母さんの笑顔が、私の一番の元気の源です。
+                                                                    これからもずっと元気で、たくさん一緒に楽しい思い出を作ろうね。
+                                                                  心から愛を込めて。</p>
+                                                                </div>
+                                                              </div>
+                                                              
+                                                              <aside class="right-column">
+                                                                <div class="panel">
+                                                                  <h3>特別なクーポン</h3>
+                                                                  <div class="coupon">
+                                                                    <h4>肩もみ券 — 無期限</h4>
+                                                                    <p>いつでもこの券を提示してね。愛を込めて。</p>
+                                                                  </div>
+                                                                </div>
+                                                              </aside>
+                                                            </div>
+                                                            </main>
+                                                          </div>
+                                                          
+                                                          <script>
+                                                            // スプラッシュ非表示後にメイン画面表示
+                                                            function showBirthdayPanel() {
+                                                              const today = new Date();
+                                                              const todayStr = (today.getMonth()+1) + '/' + today.getDate();
+                                                              const birthdayStr = '9/16';
+                                                              
+                                                              const currentEl = document.getElementById('currentDate');
+                                                              const birthdayEl = document.getElementById('birthdayDate');
+                                                              const messageEl = document.getElementById('birthdayMessage');
+                                                              const arrow1 = document.getElementById('arrow1');
+                                                              const arrow2 = document.getElementById('arrow2');
+                                                              
+                                                              // 初期化
+                                                              currentEl.textContent = '';
+                                                              birthdayEl.textContent = '';
+                                                              messageEl.textContent = '';
+                                                              arrow1.style.display = 'none';
+                                                              arrow2.style.display = 'none';
+                                                              
+                                                              // 順番に表示
+                                                              setTimeout(()=>{ currentEl.textContent = '現在の日付：' + todayStr; }, 300);
+                                                              setTimeout(()=>{ arrow1.style.display = 'block'; }, 900);
+                                                              setTimeout(()=>{ birthdayEl.textContent = '誕生日：' + birthdayStr; }, 1200);
+                                                              setTimeout(()=>{ arrow2.style.display = 'block'; }, 1800);
+                                                              setTimeout(()=>{
+                                                                  if(todayStr === birthdayStr){
+                                                                    messageEl.textContent = 'Happy Birthday! お誕生日おめでとう🎉';
+                                                                  } else {
+                                                                    messageEl.textContent = '誕生日は終わりました🥺 また来年のお楽しみです';
+                                                                  }
+                                                              }, 2200);
+                                                            }
+                                                            
+                                                            function hideSplash() {
+                                                              const splash = document.getElementById('splash');
+                                                              const main = document.getElementById('mainContent');
+                                                              if(splash) splash.style.display = 'none';
+                                                              if(main) main.setAttribute('aria-hidden','false');
+                                                              showBirthdayPanel();
+                                                            }
+                                                            
+                                                            // スプラッシュ自動非表示
+                                                            setTimeout(hideSplash, 3000);
+                                                          </script>
+                                                          
+                                                        </body>
+                                                      </html>
