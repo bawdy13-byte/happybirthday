@@ -198,7 +198,7 @@
         <div class="panel">
           <h3>Special Coupon</h3>
           <div class="coupon">
-            <p>クイズに正解すると LINE ギフトリンクが表示されます。答えを入力して「確認」ボタンを押してください。</p>
+            <p>クイズに正解すると、ギフトリンクが表示されます。答えを入力して「確認」ボタンを押してください。</p>
 
             <!-- Improved soft UI input -->
             <div class="coupon-input" role="group" aria-label="クイズの答え入力">
@@ -214,7 +214,7 @@
 
             <!-- 初期は非表示 -->
             <div id="linkWrapper" class="hidden" style="margin-top:6px">
-              <a id="lineGift" class="gift-link" href="#" target="_blank" rel="noopener">LINEギフトを贈る</a>
+              <a id="lineGift" class="gift-link" href="#" target="_blank" rel="noopener">ギフトを受け取る</a>
             </div>
 
           </div>
@@ -319,7 +319,7 @@ function startHeroFireworks(){
 
   function revealLink(){
     linkWrapper.classList.remove('hidden');
-    lineLink.setAttribute('href','https://line.me/'); // 実際のURLに差し替えてください
+    lineLink.setAttribute('href','https://www.youtube.com/'); // 実際のURLに差し替えてください
     feedback.textContent = '正解です！リンクが表示されました。';
     feedback.className = 'feedback success';
   }
